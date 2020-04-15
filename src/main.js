@@ -4,10 +4,20 @@ import router from './router'
 import store from './store'
 // import mapv from "mapv";
 // console.log(mapv);
-
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+import './assets/style/var.less';
 import '@/icons'
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
+
+Vue.use(ElementUI);
+
+import {
+    message
+} from '@/common/message.js';
+Vue.prototype.$message = message;
+
 
 new Vue({
   router,

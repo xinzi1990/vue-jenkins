@@ -1,7 +1,7 @@
 /*
  * @file: /
  * @Author: wangxin
- * @LastEditTime: 2019-11-01 14:40:01
+ * @LastEditTime: 2020-04-15 18:01:50
  */
 
 // const isProduction = process.env.NODE_ENV === 'production'
@@ -10,10 +10,11 @@ const path = require('path');
 function resolve(dir) {
     return path.join(__dirname, './', dir)
 }
+console.log(resolve('src/assets/style/var.less'));
 module.exports = {
     // 保存的时候是否验证验证代码规范性
     lintOnSave: false,
-    outputDir: 'judge_html',
+    outputDir: 'dist',
     // 部署应用包时的基本URL
     // 默认值为'/'，可设置''或'./'，所有资源会被链接为相对路径，这样打出来的包可以被部署在任意路径，也可设置为/my-app/这样的子路径
     // history.pushState路由和多页面配置时相对路径无效，请使用后面方式指定生产特定绝对路径process.env.NODE_ENV === 'production' ? '/production-sub-path/' : '/'
@@ -41,6 +42,16 @@ module.exports = {
             .rule('images')
             .test(/\.(png|jpe?g|gif|svg)(\?.*)?$/)
     },
+    pluginOptions: {
+        "style-resources-loader": {
+            preProcessor: "less",
+            patterns: [
+                //这个是加上自己的路径，
+                //注意：试过不能使用别名路径
+                path.resolve(__dirname, "./src/assets/style/var.less")
+            ]
+        }
+    },
     configureWebpack: {
         
         externals: {
@@ -52,6 +63,7 @@ module.exports = {
             // 'element-ui': 'ELEMENT'
         },
         resolve: {
+            extensions: ['.less'],
             // 路径别名
             alias: {
                 '@components': '@/components'
