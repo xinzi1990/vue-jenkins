@@ -1,11 +1,12 @@
 /*
  * @file: /
  * @Author: wangxin
- * @LastEditTime: 2020-04-15 10:56:17
+ * @LastEditTime: 2020-05-25 13:51:24
  */
 /**重置message，防止重复点击重复弹出message弹框 */
 import { Message } from "element-ui";
-console.log(Message);
+import Vue from 'vue';
+
 let timer = null;
 let messageInstance = null;
 let openSetTimeout = function () {

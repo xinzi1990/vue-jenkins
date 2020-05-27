@@ -1,7 +1,7 @@
 /*
  * @file: /
  * @Author: wangxin
- * @LastEditTime: 2020-04-15 18:01:50
+ * @LastEditTime: 2020-05-27 15:18:56
  */
 
 // const isProduction = process.env.NODE_ENV === 'production'
@@ -10,7 +10,6 @@ const path = require('path');
 function resolve(dir) {
     return path.join(__dirname, './', dir)
 }
-console.log(resolve('src/assets/style/var.less'));
 module.exports = {
     // 保存的时候是否验证验证代码规范性
     lintOnSave: false,
@@ -72,7 +71,7 @@ module.exports = {
     },
     // 所有 webpack-dev-server 的选项
     devServer: {
-        port: 8080,
+        port: 8888,
         disableHostCheck: true,
         overlay: {
             warnings: false,
@@ -83,7 +82,8 @@ module.exports = {
             '/map': {
                 // target: 'http://13.114.8.11:8880',//保定物理机
                 // target: 'http://10.86.187.30:8880',
-                target: 'http://yq01-yq01-sc-dev.epc.baidu.com:8880',
+                // target: 'http://10.32.105.109:8880',
+                target: 'http://10.130.49.121:8883',
                 secure: false, // 如果是https接口，需要配置这个参数
                 changeOrigin: true,
                 ws: false

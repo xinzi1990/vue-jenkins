@@ -1,14 +1,22 @@
-/*
- * @file: /
- * @Author: wangxin
- * @LastEditTime: 2020-04-15 19:19:13
- */
-import AAA from './aaa/index';
-import BBB from './bbb/index';
+import AAA from './AAA/index';
+import BBB from './BBB/index';
 
 const components = [
     AAA,
     BBB
 ]
 
-export default components;
+const install = function (Vue) {
+    if (install.installed) return;
+    components.map(component => Vue.component(component.name, component));
+};
+
+
+if (typeof window !== 'undefined' && window.Vue) {
+    install(window.Vue);
+}
+export default{
+    install,
+    AAA,
+    BBB
+};
